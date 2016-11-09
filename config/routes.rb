@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   get 'users/new'
 
   root                 'static_pages#home'
+  get     'template1'    => 'static_pages#template1'
+  get     'template2'    => 'static_pages#template2'
+  get     'template3'    => 'static_pages#template3'
+  get     'template4'    => 'static_pages#template4'
   get     'help'    => 'static_pages#help'
   get     'about'   => 'static_pages#about'
   get     'contact' => 'static_pages#contact'
