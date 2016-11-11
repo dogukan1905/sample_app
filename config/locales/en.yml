@@ -1,23 +1,27 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
+---
 
 en:
-  hello: "Hello world"
+  hello: "Hello World"
+  title: "Datlas - Data Reporting"
+  about_us: "About"
+  features: "Features"
+  contact: "Contact"
+  reporting_time: "Don't worry about the time you spend on reporting!"
+  general_features: "Fast, secure and easy way of data reporting"
+  more: "More"
+  what_is: "What Is Datlas?"
+  expl_1: "Datlas is an application to visualize and report data for you easier and faster. It allows you to see whatever you want to see about your data whenever you want."
+  expl_2: "Is it required that data must be reported in a special format? Datlas helps you to get data reports in which you format you want."
+  expl_3: "Datlas allows you to spend your time on other jobs instead of preparing reports!"
+  email_expl: "Leave your e-mail address to get information from us."
+  feature_expl: "Fast! Secure! Easy!"
+  fast: "Instant Access"
+  fast_expl: "Get data you want in seconds!"
+  secure: "You Are Secured"
+  secure_expl: "Your data cannot be seen and used by any third party!"
+  specialized: "Specialized Reports"
+  specialized_expl: "Data you want to get is prepared in a format that you want!"
+  easy: "Just Know What You Want"
+  easy_expl: "Lucid interface provides you to handle your reporting process with just few clicks."
+  dont_wait: "Stop waiting."
+  meet_datlas: "Meet Datlas."

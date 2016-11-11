@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Datlas - Veri Raporlama</title>
+    <title><%= t('title') %></title>
 
     <!-- Bootstrap Core CSS -->
     <link href="templates/3/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -41,7 +41,6 @@
 
       ga('create', 'UA-87284969-1', 'auto');
       ga('send', 'pageview');
-
     </script>
 </head>
 
@@ -70,6 +69,11 @@
             .bottom-form {
                 text-align: left;
             }
+
+            .langButton {
+                margin-top: 17px;
+                margin-left: 20px;
+            }
         }
 
         @media screen and (max-width: 600px) {
@@ -82,6 +86,11 @@
             }
             .center-sm {
                 text-align: center;
+            }
+
+            .langButton {
+                float: left !important;
+                margin-left: 15px;
             }
         }
     </style>
@@ -99,14 +108,23 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a class="page-scroll" href="#download">HAKKIMIZDA</a>
+                        <a class="page-scroll" href="#download"><%= t('about_us') %></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#features">ÖZELLİKLER</a>
+                        <a class="page-scroll" href="#features"><%= t('features') %></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#contact">İLETİŞİM</a>
+                        <a class="page-scroll" href="#contact"><%= t('contact') %></a>
                     </li>
+                    <% if session[:locale] == 'en' %>
+                        <%= link_to set_language_turkish_path do %>
+                            <li class="pull-right langButton"><span class="lang-sm" lang="tr"></span> TR</li>
+                        <% end %>
+                    <% else %>
+                        <%= link_to set_language_english_path do %>
+                            <li class="pull-right langButton"><span class="lang-sm" lang="en"></span><span class="langLabel"> EN</span></li>
+                        <% end %>
+                    <% end %>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -130,10 +148,10 @@
                               <% end %>
                             </h1>
                             <h1 class="text-center" style="font-weight: bold;">DATLAS</h1>
-                            <h2 class="text-center">Raporlamaya harcadığınız zamanı daha fazla dert etmeyin!</h2>
-                            <h3 class="text-center">Veritabanı raporlamanın hızlı, güvenilir ve kolay yolu</h3>
+                            <h2 class="text-center"><%= t('reporting_time') %></h2>
+                            <h3 class="text-center"><%= t('features') %></h3>
                             <div class="text-center">
-                                <a href="#download" class="btn btn-outline btn-xl page-scroll">Daha Fazla</a>
+                                <a href="#download" class="btn btn-outline btn-xl page-scroll"><%= t('more') %></a>
                             </div>
                         </div>
                     </div>
@@ -146,11 +164,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <h2 class="section-heading">Datlas nedir?</h2>
-                    <h3>Datlas veritabanı görselleştirmeyi ve raporlamayı sizin yerinize kısa sürede, kolayca gerçekleştiren bir uygulamadır. Sadece bir kaç tıkla veritabanınızla ilgili dilediğiniz bilgiyi, dilediğiniz anda görebilmenizi sağlar.</h3>
-                    <h3>Bu bilgilerin size özel bir formatta raporlanması mı gerekiyor? Datlas dilediğiniz formatta rapor almanıza yardımcı olur.</h3>
-                    <h3>Datlas size veri raporlamaya harcayacağınız zamanı başka şekillerde değerlendirebilme imkanı sunuyor!</h3>
-                    <h4 style="color: white; margin-top: 100px;">Sizi haberdar edebilmemiz için email adresinizi bırakın.</h4>
+                    <h2 class="section-heading"><%= t('what_is') %></h2>
+                    <h3><%= t('expl_1') %></h3>
+                    <h3><%= t('expl_2') %></h3>
+                    <h3><%= t('expl_3') %></h3>
+                    <h4 style="color: white; margin-top: 100px;"><%= t('email_expl') %></h4>
                     <%= form_for @newsletter, url: create_newsletter_path, :html => {:multipart => true} do |f| %>
                         <div class="form col-md-offset-2 col-md-9 col-xs-12 text-center">
                           <%= f.email_field :email, class: 'form-control email-input', placeholder: '', required: true %>
@@ -177,7 +195,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="section-heading">
-                        <h2>Hızlı! Güvenilir! Kolay!</h2>
+                        <h2><%= t('feature_expl') %></h2>
                         <hr>
                     </div>
                 </div>
@@ -189,15 +207,15 @@
                             <div class="col-md-6">
                                 <div class="feature-item">
                                     <i class="icon-hourglass text-primary"></i>
-                                    <h3>Anında Erişim</h3>
-                                    <p class="text-muted">Saniyeler içerisinde istediğiniz veriye ulaşın!</p>
+                                    <h3><%= t('fast') %></h3>
+                                    <p class="text-muted"><%= t('fast_expl') %></p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="feature-item">
                                     <i class="icon-shield text-primary"></i>
-                                    <h3>Güvendesiniz</h3>
-                                    <p class="text-muted">Verileriniz sizden başkası tarafından görüntülenemez ve kullanılamaz!</p>
+                                    <h3><%= t('secure') %></h3>
+                                    <p class="text-muted"><%= t('secure_expl') %></p>
                                 </div>
                             </div>
                         </div>
@@ -205,15 +223,15 @@
                             <div class="col-md-6">
                                 <div class="feature-item">
                                     <i class="icon-magic-wand text-primary"></i>
-                                    <h3>Özelleştirilmiş Raporlar</h3>
-                                    <p class="text-muted">Elde etmek istediğiniz veriler istediğiniz yapıya uygun hale getirilir!</p>
+                                    <h3><%= t('specialized') %></h3>
+                                    <p class="text-muted"><%= t('specialized_expl') %></p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="feature-item">
                                     <i class="icon-directions text-primary"></i>
-                                    <h3>Ne İstediğinizi Bilin Yeter</h3>
-                                    <p class="text-muted">Anlaşılır arayüz raporlama işlemlerinizi bir kaç tıkla halledebilmenizi sağlar.</p>
+                                    <h3><%= t('easy') %></h3>
+                                    <p class="text-muted"><%= t('easy_expl') %></p>
                                 </div>
                             </div>
                         </div>
@@ -225,8 +243,8 @@
     <section id="contact" class="cta contact-image" style="background-image: url('templates/3/img/handshake2.jpg');">
         <div class="cta-content">
             <div class="container">
-                <h2 class="center-sm" style="max-width:760px;">Daha fazla beklemeyin.<br>Datlas'la tanışın.</h2>
-                <h4 class="center-sm" style="color: white">Sizi haberdar edebilmemiz için email adresinizi bırakın.</h4>
+                <h2 class="center-sm" style="max-width:760px;"><%= t('dont_wait') %><br><%= t('meet_datlas') %></h2>
+                <h4 class="center-sm" style="color: white"><%= t('email_expl') %></h4>
                 <%= form_for @newsletter, url: create_newsletter_path, :html => {:multipart => true} do |f| %>
                     <div class="form col-md-6 col-xs-12 row text-center bottom-form">
                       <%= f.email_field :email, class: 'form-control email-input', placeholder: 'abc@def.com', required: true %>

@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   post    'login'   => 'sessions#create'
   delete  'logout'  => 'sessions#destroy'
   post    'create/newsletter' => 'application#create_newsletter'
+  get 'set_language/english'
+  get 'set_language/turkish'
   resources :users do
     member do
       get :following, :followers

@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :expire_hsts
   # include SessionsHelper
+  
 
   def create_newsletter
     news_letter = Newsletter.new(newsletter_params)
