@@ -23,8 +23,9 @@ class StaticPagesController < ApplicationController
       render 'templates/2/index', layout: false
   end
 
-  def template3
-      render 'templates/3/index', layout: false
+  def index
+      @newsletter = Newsletter.new
+      render 'index', layout: false
   end
 
   def template4

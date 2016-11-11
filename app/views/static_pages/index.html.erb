@@ -37,45 +37,47 @@
 </head>
 
 <body id="page-top">
+
     <style type="text/css">
-        .news-email {
-          background: #FFFFFF;
-          border: 1px solid #CDDCDD;
-          border-radius: 0.4rem;
-          height: 30px;
-          width: 210px;
-          text-indent: 10px;
-            -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-            -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-            box-sizing: border-box;         /* Opera/IE 8+ */
+        .email-input {
+            width: inherit !important;
+            display: initial;
+            border: 2px solid #FDC842;
+        }
+        .btn-email-submit:hover {
+            background-color: #B63059;
         }
 
-        .news-email:focus {
-          box-shadow: 0 0 0 2px #CDDCDD !important;
-          border: 1px solid #72949D;
-          border-radius: 0.4rem;
-          }
-
-        .submit-news {
-          margin-top: 5px;
-          border: none;
-          background: #70C1B3;
-          border-radius: 0.4rem;
-          width: 150px;
-          height: 29px;
-          font-family: "Nova-Semibold";
-          font-size: 14px;
-          color: #FFFFFF;
-          padding-bottom: 0px;
+        .btn-email-submit {
+            background-color: #B63059;
+        }
+        @media screen and (min-width: 601px) {
+            .contact-image {
+                background-size: 100% 100% !important;
+                
+                padding:170px 0;
+            }
         }
 
+        @media screen and (max-width: 600px) {
+            .contact-image {
+                padding: 50px 0 !important;
+                background-size: 100% 100% !important;
+            }
+            .bottom-form {
+                margin-left: 0px !important;
+            }
+            .center-sm {
+                text-align: center;
+            }
+        }
     </style>
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                    <span class="sr-only">Toggle navigation</span> <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand page-scroll" href="#page-top">Datlas</a>
             </div>
@@ -100,16 +102,25 @@
     </nav>
 
     <header>
-        <div class="container" style="background-image: url('templates/3/img/data.jpg')">
+        <div class="container">
             <div class="row">
                 <div class="col-sm-12">
                     <div class="header-content">
                         <div class="header-content-inner" style="position:relative;">
+                            <h1>
+                              <% if flash[:notice] %>
+                                  <% flash.each do |name, msg| -%>
+                                      <div style="color: #FDCB4E" id="flash">
+                                        <%= content_tag :div, msg, class: 'text-center' %>
+                                      </div>
+                                  <% end -%>
+                              <% end %>
+                            </h1>
                             <h1 class="text-center" style="font-weight: bold;">DATLAS</h1>
-                            <h2 class="text-center">Raporlamaya harcadığınız zamanı daha fazla dert etmeyin</h2>
+                            <h2 class="text-center">Raporlamaya harcadığınız zamanı daha fazla dert etmeyin!</h2>
                             <h3 class="text-center">Veritabanı raporlamanın hızlı, güvenilir ve kolay yolu</h3>
                             <div class="text-center">
-                                <a href="#download" class="btn btn-outline btn-xl page-scroll">Daha Fazla!</a>
+                                <a href="#download" class="btn btn-outline btn-xl page-scroll">Daha Fazla</a>
                             </div>
                         </div>
                     </div>
@@ -123,8 +134,26 @@
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <h2 class="section-heading">Datlas nedir?</h2>
-                    <h3>Datlas veritabanı görselleştirmeyi ve raporlamayı sizin yerinize kısa sürede kolayca halleden bir uygulamadır. Sadece bir kaç tıkla veritabanınızla ilgili dilediğiniz bilgiyi, dilediğiniz anda görebilmenizi sağlar.</h3>
-                    <h3>Bu bilgilerin size özel bir formatta mı raporlanması gerekiyor? Datlas dilediğiniz formatta rapor almanıza yardımcı olur.</h3>
+                    <h3>Datlas veritabanı görselleştirmeyi ve raporlamayı sizin yerinize kısa sürede, kolayca gerçekleştiren bir uygulamadır. Sadece bir kaç tıkla veritabanınızla ilgili dilediğiniz bilgiyi, dilediğiniz anda görebilmenizi sağlar.</h3>
+                    <h3>Bu bilgilerin size özel bir formatta raporlanması mı gerekiyor? Datlas dilediğiniz formatta rapor almanıza yardımcı olur.</h3>
+                    <h3>Datlas size veri raporlamaya harcayacağınız zamanı başka şekillerde değerlendirebilme imkanı sunuyor!</h3>
+                    <h4 style="color: white; margin-top: 100px;">Sizi haberdar edebilmemiz için email adresinizi bırakın.</h4>
+                    <%= form_for @newsletter, url: create_newsletter_path, :html => {:multipart => true} do |f| %>
+                        <div class="form col-md-offset-2 col-md-9 col-xs-12 text-center">
+                          <%= f.email_field :email, class: 'form-control email-input', placeholder: '', required: true %>
+                          <%= f.submit 'Gönder', class: 'btn btn-outline btn-bg btn-email-submit' %>
+                        </div>
+                        <br/>
+                    <% end %>
+                    <h1>
+                      <% if flash[:newsletter_alert] %>
+                          <% flash.each do |name, msg| -%>
+                              <div style="color: #FDCB4E" id="flash">
+                                <%= content_tag :div, msg, class: 'text-center' %>
+                              </div>
+                          <% end -%>
+                      <% end %>
+                    </h1>
                 </div>
             </div>
         </div>
@@ -146,32 +175,32 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="feature-item">
-                                    <i class="icon-screen-smartphone text-primary"></i>
+                                    <i class="icon-hourglass text-primary"></i>
                                     <h3>Anında Erişim</h3>
-                                    <p class="text-muted">Ready to use HTML/CSS device mockups, no Photoshop required!</p>
+                                    <p class="text-muted">Saniyeler içerisinde istediğiniz veriye ulaşın!</p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="feature-item">
-                                    <i class="icon-camera text-primary"></i>
-                                    <h3>Kapalı Sistem</h3>
-                                    <p class="text-muted">Put an image, video, animation, or anything else in the screen!</p>
+                                    <i class="icon-shield text-primary"></i>
+                                    <h3>Güvendesiniz</h3>
+                                    <p class="text-muted">Verileriniz sizden başkası tarafından görüntülenemez ve kullanılamaz!</p>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="feature-item">
-                                    <i class="icon-present text-primary"></i>
+                                    <i class="icon-magic-wand text-primary"></i>
                                     <h3>Özelleştirilmiş Raporlar</h3>
-                                    <p class="text-muted">As always, this theme is free to download and use for any purpose!</p>
+                                    <p class="text-muted">Elde etmek istediğiniz veriler istediğiniz yapıya uygun hale getirilir!</p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="feature-item">
-                                    <i class="icon-lock-open text-primary"></i>
+                                    <i class="icon-directions text-primary"></i>
                                     <h3>Ne İstediğinizi Bilin Yeter</h3>
-                                    <p class="text-muted">Since this theme is MIT licensed, you can use it commercially!</p>
+                                    <p class="text-muted">Anlaşılır arayüz raporlama işlemlerinizi bir kaç tıkla halledebilmenizi sağlar.</p>
                                 </div>
                             </div>
                         </div>
@@ -180,39 +209,31 @@
             </div>
     </section>
 
-    <section id="contact" class="cta">
+    <section id="contact" class="cta contact-image" style="background-image: url('templates/3/img/handshake2.jpg');">
         <div class="cta-content">
             <div class="container">
-                <h2 style="max-width:760px;">Daha fazla beklemeyin.<br>Datlas'la tanışın.</h2>
-                <h4>Sizi haberdar edebilmemiz için email adresinizi bırakın.</h4>
+                <h2 class="center-sm" style="max-width:760px;">Daha fazla beklemeyin.<br>Datlas'la tanışın.</h2>
+                <h4 class="center-sm" style="color: white">Sizi haberdar edebilmemiz için email adresinizi bırakın.</h4>
                 <%= form_for @newsletter, url: create_newsletter_path, :html => {:multipart => true} do |f| %>
-                    <div class="field">
-                      <%= f.email_field :email, class: 'news-email', placeholder: '', required: true %>
-                      <%= f.submit 'Gönder', class: 'submit-news' %>
+                    <div class="form col-md-6 col-xs-12 row text-center bottom-form">
+                      <%= f.email_field :email, class: 'form-control email-input', placeholder: 'abc@def.com', required: true %>
+                      <%= f.submit 'Gönder', class: 'btn btn-outline btn-email-submit' %>
                     </div>
                     <br/>
                 <% end %>
+                <h1>
+                  <% if flash[:newsletter_alert] %>
+                      <% flash.each do |name, msg| -%>
+                          <div style="color: #FDCB4E" id="flash">
+                            <%= content_tag :div, msg, class: 'text-center' %>
+                          </div>
+                      <% end -%>
+                  <% end %>
+                </h1>
             </div>
         </div>
         <div class="overlay"></div>
     </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2016 Start Bootstrap. All Rights Reserved.</p>
-            <ul class="list-inline">
-                <li>
-                    <a href="#">Privacy</a>
-                </li>
-                <li>
-                    <a href="#">Terms</a>
-                </li>
-                <li>
-                    <a href="#">FAQ</a>
-                </li>
-            </ul>
-        </div>
-    </footer>
 
     <!-- jQuery -->
     <script src="templates/3/vendor/jquery/jquery.min.js"></script>

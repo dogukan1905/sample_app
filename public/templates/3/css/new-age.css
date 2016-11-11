@@ -448,3 +448,34 @@ img::-moz-selection {
 body {
   webkit-tap-highlight-color: #222222;
 }
+
+.news-email {
+  background: #FFFFFF;
+  border: 1px solid #CDDCDD;
+  border-radius: 0.4rem;
+  height: 30px;
+  width: 210px;
+  text-indent: 10px;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+.news-email:focus {
+  box-shadow: 0 0 0 2px #CDDCDD !important;
+  border: 1px solid #72949D;
+  border-radius: 0.4rem;
+  }
+
+.submit-news {
+  margin-top: 5px;
+  border: none;
+  background: #70C1B3;
+  border-radius: 0.4rem;
+  width: 150px;
+  height: 29px;
+  font-family: "Nova-Semibold";
+  font-size: 14px;
+  color: #FFFFFF;
+  padding-bottom: 0px;
+}

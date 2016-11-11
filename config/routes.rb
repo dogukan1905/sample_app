@@ -8,10 +8,7 @@ Rails.application.routes.draw do
   get 'users/new'
 
   root                 'static_pages#home'
-  get     'template1'    => 'static_pages#template1'
-  get     'template2'    => 'static_pages#template2'
-  get     'template3'    => 'static_pages#template3'
-  get     'template4'    => 'static_pages#template4'
+  get     'template3'    => 'static_pages#index'
   get     'help'    => 'static_pages#help'
   get     'about'   => 'static_pages#about'
   get     'contact' => 'static_pages#contact'
@@ -19,6 +16,7 @@ Rails.application.routes.draw do
   get     'login'   => 'sessions#new'
   post    'login'   => 'sessions#create'
   delete  'logout'  => 'sessions#destroy'
+  post    'create/newsletter' => 'application#create_newsletter'
   resources :users do
     member do
       get :following, :followers
