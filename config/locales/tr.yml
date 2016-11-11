@@ -3,9 +3,9 @@
 tr:
   hello: "Selam Dünya"
   title: "Datlas - Veri Raporlama"
-  about_us: "Hakkımızda"
-  features: "Özellikler"
-  contact: "İletişim"
+  about_us: "HAKKIMIZDA"
+  features: "ÖZELLİKLER"
+  contact: "İLETİŞİM"
   reporting_time: "Raporlamaya harcadığınız zamanı daha fazla dert etmeyin!"
   general_features: "Veritabanı raporlamanın hızlı, güvenilir ve kolay yolu"
   more: "Daha Fazla"

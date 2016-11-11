@@ -3,9 +3,9 @@
 en:
   hello: "Hello World"
   title: "Datlas - Data Reporting"
-  about_us: "About"
-  features: "Features"
-  contact: "Contact"
+  about_us: "ABOUT"
+  features: "FEATURES"
+  contact: "CONTACT"
   reporting_time: "Don't worry about the time you spend on reporting!"
   general_features: "Fast, secure and easy way of data reporting"
   more: "More"

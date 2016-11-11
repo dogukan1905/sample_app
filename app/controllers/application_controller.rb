@@ -4,7 +4,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :expire_hsts
   # include SessionsHelper
-  
+  before_action :set_locale
+
+  def set_locale
+    I18n.locale = session[:locale] || 'tr'
+  end
 
   def create_newsletter
     news_letter = Newsletter.new(newsletter_params)
