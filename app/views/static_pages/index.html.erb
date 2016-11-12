@@ -178,7 +178,7 @@
                     <%= form_for @newsletter, url: create_newsletter_path, :html => {:multipart => true} do |f| %>
                         <div class="form col-md-offset-2 col-md-9 col-xs-12 text-center">
                           <%= f.email_field :email, class: 'form-control email-input', placeholder: '', required: true %>
-                          <%= f.submit 'Gönder', class: 'btn btn-outline btn-bg btn-email-submit' %>
+                          <%= f.submit t('submit'), class: 'btn btn-outline btn-bg btn-email-submit' %>
                         </div>
                         <br/>
                     <% end %>
@@ -254,7 +254,7 @@
                 <%= form_for @newsletter, url: create_newsletter_path, :html => {:multipart => true} do |f| %>
                     <div class="form col-md-6 col-xs-12 row text-center bottom-form">
                       <%= f.email_field :email, class: 'form-control email-input', placeholder: 'abc@def.com', required: true %>
-                      <%= f.submit 'Gönder', class: 'btn btn-outline btn-email-submit' %>
+                      <%= f.submit t('submit'), class: 'btn btn-outline btn-email-submit' %>
                     </div>
                     <br/>
                 <% end %>
